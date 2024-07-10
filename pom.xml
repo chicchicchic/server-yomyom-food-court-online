@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.10</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.jkgroup</groupId>
+	<artifactId>foodCourtServerSide</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>foodCourtServerSide</name>
+	<description>Food Court Server Side</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!--	Add More Dependencies Here	-->
+
+		<!--	NOTES: If you use "springdoc-openapi", dont install any dependency of "springfox" to use "Swagger"	-->
+		<!--	Springfox of swagger - Maven Dependency	-->
+<!--		<dependency>-->
+<!--			<groupId>io.springfox</groupId>-->
+<!--			<artifactId>springfox-swagger2</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--		</dependency>-->
+		<!-- it’s enough to add a single springfox-boot-starter dependency	-->
+<!--		<dependency>-->
+<!--			<groupId>io.springfox</groupId>-->
+<!--			<artifactId>springfox-boot-starter</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--		</dependency>-->
+<!--		&lt;!&ndash;	To use Swagger UI, we need to add an additional Maven dependency	&ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>io.springfox</groupId>-->
+<!--			<artifactId>springfox-swagger-ui</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--		</dependency>-->
+
+
+		<!-- ========= Springdoc-openapi - Swagger ========= -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
+		<!-- In your Spring Boot application, you're using the spring-boot-starter-web dependency, which includes servlet dependencies transitively. However, since you're packaging your application as a WAR file (<packaging>war</packaging>), you need to ensure that the servlet API is provided by the servlet container at runtime. To resolve this issue, you can add the servlet API as a provided dependency in your pom.xml file. Here's how you can do it: -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>4.0.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+
+		<!-- ========= To validation ========= -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>jakarta.validation</groupId>-->
+<!--			<artifactId>jakarta.validation-api</artifactId>-->
+<!--			<version>3.0.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.hibernate.validator</groupId>-->
+<!--			<artifactId>hibernate-validator</artifactId>-->
+<!--			<version>8.0.1.Final</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.glassfish</groupId>-->
+<!--			<artifactId>javax.el</artifactId>-->
+<!--			<version>3.0.0</version>-->
+<!--		</dependency>-->
+
+
+		<!-- ========= To use Lombok ========= -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- ========= To connect MySQL, using JDBC ========= -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<!-- To using JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+
+		<!-- ========= Flyway - Database migration ========= -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>10.10.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+			<version>10.10.0</version>
+		</dependency>
+
+
+		<!-- ========= Spring Security + Oauth2 + Keycloak =========	-->
+		<!-- Oauth2 Client	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!--	In order to delegate the identification control to a Keycloak server, we’ll use the spring-boot-starter-oauth2-resource-server library. It will allow us to validate a JWT token with the Keycloak server	-->
+		<!-- Oauth2 Resource Server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<!-- Keycloak -->
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-spring-boot-starter</artifactId>
+			<version>24.0.2</version>
+		</dependency>
+
+
+		<!-- ========= JWT =========	-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.11.5</version>
+		</dependency>
+
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+					</image>
+				</configuration>
+			</plugin>
+
+
+			<!-- Adding Flyway - The database migrations -->
+			<!--
+				1. Version control is now universal with better tools everyday.
+				2. We have reproducible builds and continuous integration.
+				3. We have well defined release and deployment processes.
+			-->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.7.1</version>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
