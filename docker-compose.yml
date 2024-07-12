@@ -16,8 +16,8 @@ services:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_USER: khanhbuikey
+      KEYCLOAK_PASSWORD: keykhanhkey
       DB_VENDOR: h2
       KEYCLOAK_IMPORT: /tmp/realm-export.json
     ports:
