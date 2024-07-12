@@ -1,0 +1,16 @@
+services:
+  - name: food-court-server
+    type: web
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""  # No build command needed, Dockerfile handles it
+    startCommand: ""  # No start command needed, Dockerfile handles it
+    healthCheckPath: "/actuator/health"
+    envVars:
+      - key: DATABASE_URL
+        value: "jdbc:mysql://mysql:3306/food_court_v1"
+      - key: DATABASE_USERNAME
+        value: "root"
+      - key: DATABASE_PASSWORD
+        value: "khanh123root"
