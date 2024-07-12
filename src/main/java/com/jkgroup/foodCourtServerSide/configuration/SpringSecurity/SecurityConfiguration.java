@@ -45,7 +45,8 @@ public class SecurityConfiguration {
                         "/api/dish/category-list",
                         "/api/dish/dishes-by-category",
                         "/api/dish/{id:\\d+}", // Only allow paths like /api/dish/1, /api/dish/2, etc.
-                        "/api/reset-password/**"
+                        "/api/reset-password/**",
+                        "/hello/**"
                 )
                 .permitAll()
 
